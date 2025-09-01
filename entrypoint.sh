@@ -13,4 +13,4 @@ fi
 echo "Starting socat"
 socat TCP-LISTEN:22,fork TCP:127.0.0.1:2222 &
 echo "Starting wstunnel"
-exec wstunnel client --log-lvl DEBUG -L tcp://2222:$TARGET_HOST:22 wss://$UNWRAP_HOST:443
+exec wstunnel client --log-lvl DEBUG -L tcp://2222:$TARGET_HOST wss://$UNWRAP_HOST
