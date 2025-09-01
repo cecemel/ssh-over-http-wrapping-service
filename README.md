@@ -44,3 +44,12 @@ cecemel/ssh-over-http-unwrapping-service:0.0.1
 ```
 ssh user@localhost
 ```
+## Environment Variables
+- `TARGET_HOST` (required)
+  The final ssh target host and port.
+  Example: `remote-server:22`
+- `UNWRAP_HOST` (required)
+  The host and port of the unwrapping service.
+  Example: `unwrapping-server:443`
+- `UNWRAP_HOST_TLS_ENABLED` (optional, default: `true`)
+  Controls whether TLS is used for the connection to the unwrapping service.
