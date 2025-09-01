@@ -18,7 +18,9 @@ else
     echo "TLS is enabled, using protocol: $PROTOCOL"
 fi
 
+WS_COMMAND="tcp://2222:$TARGET_HOST $PROTOCOL://$UNWRAP_HOST"
+
 echo "Starting socat"
 socat TCP-LISTEN:22,fork TCP:127.0.0.1:2222 &
 echo "Starting wstunnel"
-exec wstunnel client --log-lvl DEBUG -L tcp://2222:$TARGET_HOST $PROTOCOL://$UNWRAP_HOST
+exec wstunnel client --log-lvl DEBUG -L $WS_COMMAND
