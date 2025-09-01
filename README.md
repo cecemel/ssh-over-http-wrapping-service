@@ -1,3 +1,34 @@
 # ssh-over-http-wrapping-service
-Basic wrapper around https://github.com/erebe/wstunnel to tunnel ssh connections over http.
-## Useage
+
+Simple wrapper around [wstunnel](https://github.com/erebe/wstunnel) to tunnel ssh over http.
+
+## Usage
+You need both:
+- [ssh-over-http-wrapping-service](https://github.com/cecemel/ssh-over-http-wrapping-service)
+- [ssh-over-http-unwrapping-service](https://github.com/cecemel/ssh-over-http-unwrapping-service)
+
+The wrapping service sends ssh traffic wrapped in http to the unwrapping service.
+The unwrapping service removes the http layer and forwards ssh to the target host.
+
+### Example
+
+Local machine is in a network that only allows http.
+We want to ssh to `remote-server` outside this network.
+We also need an `unwrapping-server` outside the network.
+
+#### On local machine
+```
+docker run -p 22:22
+-e TARGET_HOST="remote-server:22"
+-e UNWRAP_HOST="unwrapping-server:443"
+cecemel/ssh-over-http-wrapping-service:0.0.1
+```
+#### On unwrapping server (outside network)
+```
+docker run -p 443:443
+cecemel/ssh-over-http-unwrapping-service:0.0.1
+```
+#### Connect
+```
+ssh user@localhost
+```
