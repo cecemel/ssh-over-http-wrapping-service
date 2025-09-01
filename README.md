@@ -2,6 +2,15 @@
 
 Simple wrapper around [wstunnel](https://github.com/erebe/wstunnel) to tunnel ssh over http.
 
+## Rationale
+
+wstunnel is a good tool to escape constrained networks.
+But sometimes you cannot install or run it on a machine.
+Also, the ssh agent can be very restricted.
+
+That is why this project wraps wstunnel in a docker image.
+The goal is to make it as transparent as possible for the ssh agent.
+
 ## Usage
 You need both:
 - [ssh-over-http-wrapping-service](https://github.com/cecemel/ssh-over-http-wrapping-service)
