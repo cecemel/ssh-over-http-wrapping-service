@@ -30,15 +30,14 @@ We also need an `unwrapping-server` outside the network.
 
 #### On local machine
 ```
-docker run -p 22:22
--e TARGET_HOST="remote-server:22"
--e UNWRAP_HOST="unwrapping-server:443"
-cecemel/ssh-over-http-wrapping-service:0.0.1
+docker run -p 22:22 \
+  -e TARGET_HOST="remote-server:22" \
+  -e UNWRAP_HOST="unwrapping-server:443" \
+  cecemel/ssh-over-http-wrapping-service:0.0.1
 ```
 #### On unwrapping server (outside network)
 ```
-docker run -p 443:443
-cecemel/ssh-over-http-unwrapping-service:0.0.1
+docker run -p 443:443 cecemel/ssh-over-http-unwrapping-service:0.0.1
 ```
 #### Connect
 ```
