@@ -2,6 +2,9 @@
 
 Simple wrapper around [wstunnel](https://github.com/erebe/wstunnel) to tunnel ssh over http.
 
+This service wraps ssh into a http (ws) connection.
+It must be used together with [ssh-over-http-unwrapping-service](https://github.com/cecemel/ssh-over-http-unwrapping-service).
+
 ## Rationale
 
 wstunnel is a good tool to escape constrained networks.
